@@ -1,15 +1,15 @@
-import React from "react";
+import * as React from "react";
 import MainMenu from "./pages/MainMenu";
 import Search from "./pages/Search";
 
-const PAGE = {
-	MAIN_MENU: 'MAIN_MENU',
-	SEARCH: 'SEARCH',
+enum PAGE {
+	MAIN_MENU,
+	SEARCH,
 };
 
-export default class App extends React.Component {
+export default class App extends React.Component<any, { page: PAGE }> {
 	constructor() {
-		super();
+		super({});
 		this.state = { page: PAGE.MAIN_MENU };
 	}
 

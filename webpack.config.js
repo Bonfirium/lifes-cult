@@ -19,7 +19,7 @@ const extractSass = new ExtractTextPlugin({
 const timeCache = Date.now();
 
 module.exports = {
-	entry: { app: path.resolve('src/index.jsx') },
+	entry: { app: path.resolve('src/index.tsx') },
 	output: {
 		publicPath: '/',
 		path: path.resolve('dist'),
@@ -31,9 +31,9 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
+				test: /\.tsx?$/,
 				include: /src/,
-				use: { loader: 'babel-loader' },
+				use: { loader: 'ts-loader' },
 			}, {
 				test: /\.scss$/,
 				use: extractSass.extract({
@@ -52,7 +52,7 @@ module.exports = {
 			},
 		},
 	},
-	resolve: { modules: ['node_modules', path.resolve('src')], extensions: ['.js', '.jsx', '.json']},
+	resolve: { modules: ['node_modules', path.resolve('src')], extensions: ['.js', '.jsx', '.json', '.ts', '.tsx']},
 	plugins: [
 		new CleanWebpackPlugin(['dist']),
 		new webpack.DefinePlugin({ __VERSION__: JSON.stringify(config.url) }),
