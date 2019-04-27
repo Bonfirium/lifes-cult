@@ -3,8 +3,9 @@ import { render } from "react-dom";
 
 import "./assets/styles/main.scss";
 import App from "./components/App";
+import { connect } from "./actions/socket";
 
-render(
+connect().then(() => render(
 	<App />,
 	document.getElementById('root'),
-);
+));
