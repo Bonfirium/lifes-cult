@@ -1,0 +1,12 @@
+#search {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	& > .loader {
+		margin-right: 32px;
+	}
+	& > :not(.loader) {
+		color: white;
+		font-size: 32px;
+	}
+}
