@@ -10,13 +10,15 @@ enum STATUS {
 interface State {
 	hand: Array<string>;
 	status: STATUS;
+	yourTurn: boolean;
+
 	hover_monster_id?: string;
 }
 
-function getStatusText(status: STATUS) {
+function getStatusText(status: STATUS, yourTurn: boolean) {
 	switch (status) {
 		case STATUS.CALL_MONSTER:
-			return 'Фаза призыва';
+			return yourTurn ? 'Фаза призыва' : 'Соперник призывает существ...';
 		default:
 			throw new Error(`text of status ${status} not implemented`);
 	}
@@ -34,7 +36,11 @@ function getStatusButton(status: STATUS) {
 export default class InGame extends React.Component<IStartGameProps, State> {
 	constructor(props: any) {
 		super(props);
-		this.state = { hand: this.props.starting_hand, status: STATUS.CALL_MONSTER };
+		this.state = {
+			hand: this.props.starting_hand,
+			status: STATUS.CALL_MONSTER,
+			yourTurn: this.props.first_step,
+		};
 	}
 
 	render() {
@@ -43,11 +49,9 @@ export default class InGame extends React.Component<IStartGameProps, State> {
 				<div id="left">
 					<div id="opponent-info">
 						<div>Жизни врага</div>
-						<div>Инвентарь врага</div>
 					</div>
 					<div id="player-info">
 						<div>Твои жизни</div>
-						<div>Твой инвентарь</div>
 					</div>
 				</div>
 				<div id="center">
@@ -74,8 +78,10 @@ export default class InGame extends React.Component<IStartGameProps, State> {
 				<div id="right">
 					<div id="card-info" />
 					<div id="game-status">
-						<div id="current-status">{getStatusText(this.state.status)}</div>
-						<div id="button-next">{getStatusButton(this.state.status)}</div>
+						<div id="current-status">{getStatusText(this.state.status, this.state.yourTurn)}</div>
+						<div id="button-next" className={this.state.yourTurn ? '' : 'display-none'}>
+							{getStatusButton(this.state.status)}
+						</div>
 					</div>
 				</div>
 			</div>

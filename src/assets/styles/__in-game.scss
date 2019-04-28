@@ -17,10 +17,12 @@
 		& > #game-status {
 			display: flex;
 			flex-direction: column;
-			justify-content: space-evenly;
+			justify-content: space-between;
 			align-items: center;
 			font-size: 32px;
+			height: 256px;
 			& > #current-status {
+				text-align: center;
 				color: red;
 			}
 			& > #button-next {
