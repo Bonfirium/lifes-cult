@@ -1,7 +1,8 @@
 import * as React from "react";
 import { IStartGameProps } from "../../actions/game";
 import OpenCardLogo from "../cards/OpenCardLogo";
-import GraveImg from "../../assets/images/grave.png";
+import getMonsterImageById from "../../assets/images/monsters";
+import { cards } from "lifescult-lib";
 
 enum STATUS {
 	CALL_MONSTER,
@@ -44,6 +45,7 @@ export default class InGame extends React.Component<IStartGameProps, State> {
 	}
 
 	render() {
+		const monster = this.state.hover_monster_id === undefined ? null : cards[this.state.hover_monster_id!];
 		return (
 			<div id="in-game" className="full-page">
 				<div id="left">
@@ -76,7 +78,29 @@ export default class InGame extends React.Component<IStartGameProps, State> {
 					</div>
 				</div>
 				<div id="right">
-					<div id="card-info" className={this.state.hover_monster_id === undefined ? 'hidden' : ''} />
+					<div id="card-info" className={this.state.hover_monster_id === undefined ? 'hidden' : ''}>
+						{this.state.hover_monster_id === undefined
+							? null
+							: (
+								<React.Fragment>
+									<div id="cost">{monster!.cost}</div>
+									<img src={getMonsterImageById(this.state.hover_monster_id)} />
+									<div id="stats">
+										<div id="left-stats">
+											<div>unc: {monster!.uncontrollability}</div>
+											<div>wild: {monster!.wildness || '-'}</div>
+										</div>
+										<div id="right-stats">
+											<div>power: {monster!.power}</div>
+											<div>max hp: {monster!.max_hp}</div>
+											<div>regen: {monster!.regen}</div>
+										</div>
+									</div>
+									<div id="description">Monster's abilities are not implemented yet</div>
+								</React.Fragment>
+							)
+						}
+					</div>
 					<div id="game-status">
 						<div id="current-status">{getStatusText(this.state.status, this.state.yourTurn)}</div>
 						<div id="button-next" className={this.state.yourTurn ? '' : 'display-none'}>

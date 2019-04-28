@@ -33,14 +33,47 @@
 			}
 		}
 		& > #card-info {
-			width: 384px;
-			height: 576px;
+			width: 320px;
+			height: 512px;
 			border-radius: 64px;
 			background: url('../images/full-card-front.png');
-			background-size: contain;
+			background-size: cover;
 			transition: all 0.2s ease-in-out;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			padding: 32px;
+			padding-bottom: 48px;
+			color: white;
+			font-size: 24px;
 			&.hidden {
 				transform: translate(384px, 0);
+			}
+			& > #cost {
+				align-self: flex-end;
+			}
+			& > img {
+				width: 260px;
+				height: 260px;
+			}
+			& > #stats {
+				font-size: 16px;
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: space-evenly;
+				& > * {
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+					align-items: flex-start;
+				}
+			}
+			& > #description {
+				text-align: center;
+				font-size: 16px;
 			}
 		}
 	}
