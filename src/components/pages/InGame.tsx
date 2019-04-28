@@ -76,7 +76,7 @@ export default class InGame extends React.Component<IStartGameProps, State> {
 					</div>
 				</div>
 				<div id="right">
-					<div id="card-info" />
+					<div id="card-info" className={this.state.hover_monster_id === undefined ? 'hidden' : ''} />
 					<div id="game-status">
 						<div id="current-status">{getStatusText(this.state.status, this.state.yourTurn)}</div>
 						<div id="button-next" className={this.state.yourTurn ? '' : 'display-none'}>

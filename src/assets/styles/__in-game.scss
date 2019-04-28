@@ -38,6 +38,10 @@
 			border-radius: 64px;
 			background: url('../images/full-card-front.png');
 			background-size: contain;
+			transition: all 0.2s ease-in-out;
+			&.hidden {
+				transform: translate(384px, 0);
+			}
 		}
 	}
 }
