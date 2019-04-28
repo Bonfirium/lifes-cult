@@ -1,6 +1,11 @@
 import { send, once } from "./socket";
 
-export async function findGame(): Promise<any> {
+export interface IStartGameProps {
+	first_step: boolean;
+	starting_hand: Array<string>;
+}
+
+export async function findGame() {
 	send('find_game');
-	return await once('game_found');
+	return <IStartGameProps>await once('game_found');
 }

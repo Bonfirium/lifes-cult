@@ -10,6 +10,32 @@
 		justify-content: space-between;
 		align-items: center;
 	}
-	& > #left {
+	& > #right {
+		align-items: center;
+		justify-content: space-evenly;
+		width: 384px;
+		& > #game-status {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+			align-items: center;
+			font-size: 32px;
+			& > #current-status {
+				color: red;
+			}
+			& > #button-next {
+				cursor: pointer;
+				padding: 32px;
+				border-radius: 32px;
+				background: #303080;
+			}
+		}
+		& > #card-info {
+			width: 384px;
+			height: 576px;
+			border-radius: 64px;
+			background: url('../images/full-card-front.png');
+			background-size: contain;
+		}
 	}
 }

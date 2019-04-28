@@ -1,0 +1,36 @@
+
+.open-card-logo {
+	background: url('../images/card-logo-front.png');
+	background-size: contain;
+	width: 128px;
+	height: 128px;
+	// transform: translate(0, 16px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 32px;
+	& > img {
+		width: 96px;
+		height: 96px;
+	}
+}
+
+.closed-card-logo {
+	background: url('../images/card-logo-front.png');
+	background-size: contain;
+	width: 128px;
+	height: 128px;
+}
+
+.open-full-card {
+	background: url('../images/full-card-front.png');
+	background-size: contain;
+	width: 128px;
+	height: 192px;
+	margin: 16px;
+	transform: translate(0, 96px);
+	& > img {
+		width: 96px;
+		height: 96px;
+	}
+}
